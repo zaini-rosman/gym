@@ -69,12 +69,10 @@ app.delete('/:id',async (req,res,next) => {
         message : e.message
       })
     }
-})
-app.use(morgan('tiny'))
+}
 app.use('./model/UserModels')
 
 app.listen(port, () => {
   console.log(`Server is starting at ${port}`)
 })
 
-module.exports = {app}
