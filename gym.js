@@ -1,5 +1,7 @@
 const express = require ('express')
+const bodyParser = require('body-parser')
 const  mongoose = require('mongoose')
+const UserModel = require('./model/UserModels')
 const app = express()
 
 const port = process.env.PORT || 1919
@@ -15,16 +17,16 @@ app.use(bodyParser.urlencoded({
     extended : false
 }))
 
-app.get('/:id',(req,res,next) => {
+app.get('/:id', async (req,res,next) => {
     try {
-        const result = await scheme.findById(req.params.id)
+       const result = await scheme.findById(req.params.id)
         res.json(result)
-      }catch(e) {
+    }catch(e) {
         res.status(200).json({
           error : true,
           message : e.message
         })
-      }
+    }
 })
 
 app.post('/', async (req,res,next) => {
@@ -45,7 +47,7 @@ app.post('/', async (req,res,next) => {
 
 app.patch('/:id',async(req,res) => {
     try{
-      const result = await scheme.findById(req.params.id)
+      const result = await UserModel.findById(req.params.id)
       result.state = req.body.state
       const a3 = await result.save()
       res.json(a3)
