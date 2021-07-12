@@ -7,7 +7,7 @@ const app = express()
 const port = process.env.PORT || 1919
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.ehulh.mongodb.net/gymnasium?retryWrites=true&w=majority" , {
-useNewParser: true,
+useNewUrlParser: true,
 useUnifiedTopology : true
 }, () => {
 console.log('Connected to mongodb atlas') 
@@ -71,4 +71,4 @@ app.delete('/:id',async (req,res,next) => {
     }
 })
 
-app.listen(process.env.PORT || 1919)
+app.listen(PORT, console.log(`Server is starting at ${PORT}`))
