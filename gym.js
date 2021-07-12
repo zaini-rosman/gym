@@ -12,8 +12,8 @@ useUnifiedTopology : true
 }, () => {
 console.log('Connected to mongodb atlas') 
 })
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
+app.use(express.json())
+app.use(express.urlencoded({
     extended : false
 }))
 
