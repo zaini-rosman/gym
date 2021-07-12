@@ -17,6 +17,4 @@ app.get('/',(req,res) => {
     res.send('Hi Zaini')
 })
 
-app.listen(process.env.PORT,( ) => {
-    console.log('Connected to the port')
-})
+app.listen(process.env.PORT || 1919)
