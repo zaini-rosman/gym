@@ -70,7 +70,7 @@ app.delete('/:id',async (req,res,next) => {
       })
     }
 })
-
+app.use(morgan('tiny'))
 app.use('./model/UserModels')
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`))
