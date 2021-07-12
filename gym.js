@@ -6,7 +6,7 @@ const app = express()
 
 const port = process.env.PORT || 1919
 
-mongoose.connect("mongodb+srv://m001-student:m001-mongodb-basics@sandbox.ehulh.mongodb.net/gymnasium?retryWrites=true&w=majority" , {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.ehulh.mongodb.net/gymnasium?retryWrites=true&w=majority" , {
 useNewParser: true,
 useUnifiedTopology : true
 }, () => {
