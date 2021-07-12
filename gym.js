@@ -12,8 +12,8 @@ useUnifiedTopology : true
 }, () => {
 console.log('Connected to mongodb atlas') 
 })
-app.use(express.json())
-app.use(express.urlencoded({
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
     extended : false
 }))
 
@@ -48,7 +48,7 @@ app.post('/', async (req,res,next) => {
 app.patch('/:id',async(req,res) => {
     try{
       const result = await UserModel.findById(req.params.id)
-      result.state = req.body.state
+      result.Date_Time = req.body.Date_Time
       const a3 = await result.save()
       res.json(a3)
     }catch(err){
@@ -73,4 +73,8 @@ app.delete('/:id',async (req,res,next) => {
 app.use(morgan('tiny'))
 app.use('./model/UserModels')
 
-app.listen(PORT, console.log(`Server is starting at ${PORT}`))
+app.listen(port, () => {
+  console.log(`Server is starting at ${port}`)
+})
+
+module.exports = {app}
